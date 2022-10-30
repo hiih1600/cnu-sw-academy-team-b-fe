@@ -10,7 +10,7 @@ const RobotAddModal = ({isOpen, setIsOpen, getRobotList}) => {
 
     const addRobot = async () => {
         try {
-            await axios.post(`http://10.0.4.6:8080/api/v1/robot/`, 
+            await axios.post(origin:`http://10.0.4.6:8080/api/v1/robot/`, 
             {
                 address: ip + ":" + port,
                 user: user,
