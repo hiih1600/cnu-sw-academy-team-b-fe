@@ -21,7 +21,7 @@ function Navbar() {
 
   useEffect(() => {
     axios
-      .get("http://10.0.4.6:8080/api/v1/jobdescriptors")
+      .get(origin:"http://10.0.4.6:8080/api/v1/jobdescriptors")
       .then((v) => setJobDescriptors(v.data));
   }, []);
 
@@ -34,7 +34,7 @@ function Navbar() {
       alert("작업명세서 이름을 입력해주세요.");
     } else {
       axios
-        .post("http://10.0.4.6:8080/api/v1/jobdescriptor", {
+        .post(origin:"http://10.0.4.6:8080/api/v1/jobdescriptor", {
           name: jobDescriptorName,
           isRepeat: false,
         })
@@ -42,7 +42,7 @@ function Navbar() {
           (v) => {
             alert("작업명세서가 생성되었습니다.");
             axios
-              .get("http://10.0.4.6:8080/api/v1/jobdescriptors")
+              .get(origin:"http://10.0.4.6:8080/api/v1/jobdescriptors")
               .then((v) => {
                 setJobDescriptors(v.data);
                 console.log(v.data)
