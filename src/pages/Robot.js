@@ -20,7 +20,7 @@ const Robot = () => {
 
     const getRobotList = async () => {
         try {
-            const fetchedRobots = await axios.get('http://10.0.4.8:8080/api/v1/robots')
+            const fetchedRobots = await axios.get('http://10.0.4.6:8080/api/v1/robots')
             console.log(fetchedRobots.data);
             setRobotList(fetchedRobots.data);
         } catch (e) {
@@ -30,7 +30,7 @@ const Robot = () => {
 
     const onClickDelete = async (id) => {
         try {
-            await axios.delete(`http://10.0.4.8:8080/api/v1/robot/${id}`)
+            await axios.delete(`http://10.0.4.6:8080/api/v1/robot/${id}`)
         
             setRobotList(robotList.filter(v => v.id !== id))
         } catch (e) {
