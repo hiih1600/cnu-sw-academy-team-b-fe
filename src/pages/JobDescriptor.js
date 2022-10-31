@@ -154,7 +154,7 @@ function JobDescriptor({ match }) {
       alert("작업명세서에 로봇이 할당되지 않았습니다");
       return;
     }
-    axios.get("http://10.0.4.6:8080/api/v1/exec/jobdescriptor/" + id).then(
+    axios.get("/api/v1/exec/jobdescriptor/" + id).then(
       (v) => {
         setLog(v.data);
       },
