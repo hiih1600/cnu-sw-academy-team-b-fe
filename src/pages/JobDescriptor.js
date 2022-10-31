@@ -19,16 +19,16 @@ function JobDescriptor({ match }) {
   );
 
   useEffect(() => {
-    axios.get("http://10.0.4.6:8080/api/v1/jobdescriptor/" + id).then((v) => {
+    axios.get("/api/v1/jobdescriptor/" + id).then((v) => {
       setJobDescriptor(v.data);
       axios
-        .get("http://10.0.4.6:8080/api/v1/robots")
+        .get("/api/v1/robots")
         .then((v) => setRobots(v.data));
     });
   }, [id]);
 
   useEffect(() => {
-    axios.get("http://10.0.4.6:8080/api/v1/jobs/" + id).then((v) => {
+    axios.get("/api/v1/jobs/" + id).then((v) => {
       setJobs(v.data);
     });
   }, [id]);
@@ -79,10 +79,10 @@ function JobDescriptor({ match }) {
 
   // CRUD
   const handleDeleteJobDescriptor = () => {
-    axios.delete("http://10.0.4.6:8080/api/v1/jobdescriptor/" + id).then(
+    axios.delete("/api/v1/jobdescriptor/" + id).then(
       (v) => {
         alert("작업명세서가 삭제되었습니다.");
-        window.location.href = "http://211.188.64.134:3000";
+        window.location.href = "/";
       },
       (e) => {
         alert("서버 장애가 발생했습니다.");
@@ -122,7 +122,7 @@ function JobDescriptor({ match }) {
       alert("로봇을 반드시 선택해주세요.");
     } else {
       axios
-        .put("http://10.0.4.6:8080/api/v1/jobdescriptor/" + id, {
+        .put("/api/v1/jobdescriptor/" + id, {
           name: jobDescriptorName,
           robotId: changedRobotId,
           isRepeat: isRepeat,
