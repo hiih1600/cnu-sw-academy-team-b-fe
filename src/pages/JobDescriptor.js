@@ -92,7 +92,7 @@ function JobDescriptor({ match }) {
   };
   const handleAddJobBtn = () => {
     axios
-      .post("http://10.0.4.6:8080/job", {
+      .post("/job", {
         command: command,
         parameter: parameter,
         activation: false,
@@ -142,7 +142,7 @@ function JobDescriptor({ match }) {
 
   const onClickDelete = async (id) => {
     try {
-      await axios.delete(`http://10.0.4.6:8080/job/` + id);
+      await axios.delete(`/job/` + id);
       setJobs(jobs.filter((v) => v.id !== id));
     } catch (e) {
       console.log(e);
