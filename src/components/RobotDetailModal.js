@@ -14,7 +14,7 @@ const RobotDetailModal = ({robotId, isOpen, setIsOpen, getRobotList}) => {
 
     const updateRobotDetail = async () => {
         try {
-            await axios.put(`http://localhost:8080/api/v1/robot/${robotId}`, 
+            await axios.put(`/api/v1/robot/${robotId}`, 
             {
                 address: ip + ":" + port,
                 user: user,
@@ -29,7 +29,7 @@ const RobotDetailModal = ({robotId, isOpen, setIsOpen, getRobotList}) => {
 
     const getRobotDetail = async () => {
         try {
-            const robotDetail = await axios.get(`http://localhost:8080/api/v1/robot/${robotId}`)
+            const robotDetail = await axios.get(`/api/v1/robot/${robotId}`)
             setIp(robotDetail.data.address.split(":")[0])
             setPort(robotDetail.data.address.split(":")[1])
             setUser(robotDetail.data.user)
