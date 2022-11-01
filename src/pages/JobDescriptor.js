@@ -22,7 +22,7 @@ function JobDescriptor({ match }) {
     axios.get("/api/v1/jobdescriptor/" + id).then((v) => {
       setJobDescriptor(v.data);
       axios
-        .get("http://localhost:8080/api/v1/robots")
+        .get("/api/v1/robots")
         .then((v) => setRobots(v.data));
     });
   }, [id]);
