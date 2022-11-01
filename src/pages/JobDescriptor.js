@@ -19,7 +19,7 @@ function JobDescriptor({ match }) {
   );
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/v1/jobdescriptor/" + id).then((v) => {
+    axios.get("/api/v1/jobdescriptor/" + id).then((v) => {
       setJobDescriptor(v.data);
       axios
         .get("http://localhost:8080/api/v1/robots")
@@ -28,7 +28,7 @@ function JobDescriptor({ match }) {
   }, [id]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/v1/jobs/" + id).then((v) => {
+    axios.get("/api/v1/jobs/" + id).then((v) => {
       setJobs(v.data);
     });
   }, [id]);
@@ -79,10 +79,10 @@ function JobDescriptor({ match }) {
 
   // CRUD
   const handleDeleteJobDescriptor = () => {
-    axios.delete("http://localhost:8080/api/v1/jobdescriptor/" + id).then(
+    axios.delete("/api/v1/jobdescriptor/" + id).then(
       (v) => {
         alert("작업명세서가 삭제되었습니다.");
-        window.location.href = "http://localhost:3000";
+        window.location.href = "/";
       },
       (e) => {
         alert("서버 장애가 발생했습니다.");
@@ -92,7 +92,7 @@ function JobDescriptor({ match }) {
   };
   const handleAddJobBtn = () => {
     axios
-      .post("http://localhost:8080/job", {
+      .post("/job", {
         command: command,
         parameter: parameter,
         activation: false,
@@ -122,7 +122,7 @@ function JobDescriptor({ match }) {
       alert("로봇을 반드시 선택해주세요.");
     } else {
       axios
-        .put("http://localhost:8080/api/v1/jobdescriptor/" + id, {
+        .put("/api/v1/jobdescriptor/" + id, {
           name: jobDescriptorName,
           robotId: changedRobotId,
           isRepeat: isRepeat,
@@ -142,7 +142,7 @@ function JobDescriptor({ match }) {
 
   const onClickDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/job/` + id);
+      await axios.delete(`/job/` + id);
       setJobs(jobs.filter((v) => v.id !== id));
     } catch (e) {
       console.log(e);
@@ -154,7 +154,7 @@ function JobDescriptor({ match }) {
       alert("작업명세서에 로봇이 할당되지 않았습니다");
       return;
     }
-    axios.get("http://localhost:8080/api/v1/exec/jobdescriptor/" + id).then(
+    axios.get("/api/v1/exec/jobdescriptor/" + id).then(
       (v) => {
         setLog(v.data);
       },
